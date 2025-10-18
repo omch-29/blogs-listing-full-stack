@@ -1,0 +1,105 @@
+<!-- <% layout('boilerplate') %>
+<h2 class="text-center mb-4"><i class="fa-solid fa-newspaper"></i> All Blogs</h2>
+
+<div class="row">
+  <% blogs.forEach(blog => { %>
+  <div class="col-md-6 mb-3">
+    <div class="card p-3 shadow-sm">
+      <h5><%= blog.title %></h5>
+      <p><%= blog.content.substring(0, 100) %>...</p>
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="/blogs/<%= blog._id %>" class="btn btn-sm btn-primary">Read More</a>
+        <small class="text-muted">By <%= blog.author.username %></small>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+</div> -->
+<!-- <% layout('boilerplate') %>
+
+<h2 class="text-center mb-5 fw-bold">
+  <i class="fa-solid fa-newspaper"></i> Latest Blogs
+</h2>
+
+<div class="row justify-content-center">
+  <% if (blogs.length === 0) { %>
+    <div class="text-center text-muted">
+      <h5>No blogs yet. <a href="/blogs/new">Create one</a>!</h5>
+    </div>
+  <% } else { %>
+    <% blogs.forEach(blog => { %>
+      <div class="col-md-8 mb-4">
+        <div class="card shadow-sm border-0 p-4 hover-card">
+          <h2 class="fw-bold mb-3" style="font-size: 2rem;">
+            <a href="/blogs/<%= blog._id %>" class="text-decoration-none text-dark"><%= blog.title %></a>
+          </h2>
+          <p class="text-muted mb-1">By <strong><%= blog.author.username %></strong></p>
+          <p class="text-muted"><small><%= blog.createdAt.toDateString() %></small></p>
+          <hr />
+          <p><%= blog.content.substring(0, 180) %>...</p>
+          <a href="/blogs/<%= blog._id %>" class="btn btn-primary btn-sm mt-2">
+            <i class="fa-solid fa-book-open"></i> Read More
+          </a>
+        </div>
+      </div>
+    <% }) %>
+  <% } %>
+</div>
+
+<style>
+  .hover-card {
+    transition: all 0.2s ease-in-out;
+  }
+  .hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+</style> -->
+<% layout('boilerplate') %>
+
+<h2 class="text-center mb-5 fw-bold">
+  <i class="fa-solid fa-newspaper"></i> Latest Blogs
+</h2>
+
+<div class="container-fluid px-5">
+  <% if (blogs.length === 0) { %>
+    <div class="text-center text-muted">
+      <h5>No blogs yet. <a href="/blogs/new">Create one</a>!</h5>
+    </div>
+  <% } else { %>
+    <div class="row g-4 justify-content-start">
+      <% blogs.forEach(blog => { %>
+        <div class="col-md-6 col-sm-12">
+          <div class="card shadow-sm border-0 p-4 hover-card h-100">
+            <h3 class="fw-bold mb-3" style="font-size: 1.6rem;">
+              <a href="/blogs/<%= blog._id %>" class="text-decoration-none text-dark">
+                <%= blog.title %>
+              </a>
+            </h3>
+            <p class="text-muted mb-1">
+              By <strong><%= blog.author.username %></strong>
+            </p>
+            <p class="text-muted"><small><%= blog.createdAt.toDateString() %></small></p>
+            <hr />
+            <p><%= blog.content.substring(0, 120) %>...</p>
+            <a href="/blogs/<%= blog._id %>" class="btn btn-outline-primary btn-sm mt-2">
+              <i class="fa-solid fa-book-open"></i> Read More
+            </a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>
+
+<style>
+  .hover-card {
+    transition: all 0.2s ease-in-out;
+    padding: 2rem !important;      
+    min-height: 350px;
+  }
+  .hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+</style>

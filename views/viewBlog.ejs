@@ -1,0 +1,56 @@
+<!-- <% layout('boilerplate') %>
+<div class="card p-4 shadow-sm">
+  <h2><%= blog.title %></h2>
+  <p class="text-muted">By <%= blog.author.username %> • <%= blog.createdAt.toDateString() %></p>
+  <hr />
+  <p><%= blog.content %></p>
+
+  <% if (user && user._id.toString() === blog.author._id.toString()) { %>
+  <div class="d-flex justify-content-end mt-3">
+    <a href="/blogs/<%= blog._id %>/edit" class="btn btn-warning me-2">
+      <i class="fa-solid fa-pen"></i> Edit
+    </a>
+    <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+      <button class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
+    </form>
+  </div>
+  <% } %>
+</div> -->
+<% layout('boilerplate') %>
+
+<div class="container py-4">
+  <div class="card shadow-sm border-0 p-4 mx-auto" style="max-width: 800px;">
+    <h1 class="fw-bold mb-3 text-center" style="font-size: 2.5rem;">
+      <%= blog.title %>
+    </h1>
+    <p class="text-center text-muted mb-4">
+      By <strong><%= blog.author.username %></strong> • 
+      <%= blog.createdAt.toDateString() %>
+    </p>
+    <hr />
+    <p class="fs-5" style="line-height: 1.7;"><%= blog.content %></p>
+
+    <% if (user && user._id.toString() === blog.author._id.toString()) { %>
+      <hr />
+      <div class="d-flex justify-content-end mt-3">
+        <a href="/blogs/<%= blog._id %>/edit" class="btn btn-warning me-2">
+          <i class="fa-solid fa-pen"></i> Edit
+        </a>
+        <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+          <button class="btn btn-danger">
+            <i class="fa-solid fa-trash"></i> Delete
+          </button>
+        </form>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<style>
+  .card {
+    background-color: #fff;
+  }
+  .card:hover {
+    transform: none;
+  }
+</style>

@@ -1,0 +1,17 @@
+<% layout('boilerplate') %>
+<h3 class="text-center mb-4"><i class="fa-solid fa-right-to-bracket"></i> Login</h3>
+
+<form action="/login" method="POST" class="mx-auto" style="max-width:400px;">
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input type="text" name="username" id="username" class="form-control" required />
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" name="password" id="password" class="form-control" required />
+  </div>
+  <button type="submit" class="btn btn-primary w-100">
+    <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+  </button>
+</form>
+<p class="text-center mt-3">Don’t have an account? <a href="/register">Register</a></p>
