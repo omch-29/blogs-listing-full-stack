@@ -29,7 +29,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-// Global flash messages
+
 app.use((req, res, next) => {
 res.locals.user = req.user;
   res.locals.success_msg = req.flash("success_msg");
@@ -53,5 +53,5 @@ mongoose
 app.use("/", require("./routes/authRoutes"));
 app.use("/blogs", require("./routes/blogRoutes"));
 
-// Start server
+
 app.listen(process.env.PORT || 5000, () => console.log("Server running on port 5000"));
